@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aplikasi Digital Kampus</title>
+<style>
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f1f5f9;
+    color: #1e293b;
+}
+header {
+    background: #174a83;
+    color: white;
+    padding: 22px;
+    text-align: center;
+}
+nav {
+    background: #12365e;
+    padding: 12px;
+    text-align: center;
+}
+nav button {
+    background: none;
+    border: none;
+    color: white;
+    margin: 5px 10px;
+    cursor: pointer;
+    font-size: 15px;
+}
+main {
+    max-width: 900px;
+    margin: 25px auto;
+    padding: 15px;
+}
+.card {
+    background: white;
+    padding: 20px;
+    margin-bottom: 18px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px #0001;
+}
+h2 {
+    color: #174a83;
+}
+input, button {
+    padding: 10px;
+    margin: 5px 0;
+}
+input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.action {
+    background: #174a83;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+td, th {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+th {
+    background: #e2eaf3;
+}
+footer {
+    text-align: center;
+    padding: 15px;
+    color: #64748b;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Aplikasi Digital Kampus</h1>
+    <p>Portal Informasi dan Layanan Mahasiswa</p>
+</header>
+
+<nav>
+    <button onclick="tampil('beranda')">Beranda</button>
+    <button onclick="tampil('pengumuman')">Pengumuman</button>
+    <button onclick="tampil('mahasiswa')">Data Mahasiswa</button>
+    <button onclick="tampil('jadwal')">Jadwal Kuliah</button>
+</nav>
+
+<main>
+<section id="beranda" class="card">
+    <h2>Selamat Datang</h2>
+    <p>Selamat datang di Aplikasi Digital Kampus.
+    Aplikasi ini membantu mahasiswa mendapatkan
+    informasi akademik dengan lebih mudah.</p>
+</section>
+
+<section id="pengumuman" class="card" hidden>
+    <h2>Pengumuman Kampus</h2>
+    <ul id="daftarPengumuman">
+        <li>Informasi jadwal ujian semester.</li>
+        <li>Pengumuman pembayaran biaya kuliah.</li>
+        <li>Informasi kegiatan akademik kampus.</li>
+    </ul>
+    <input id="isiPengumuman" placeholder="Tambah pengumuman">
+    <button class="action" onclick="tambahPengumuman()">Tambah</button>
+</section>
+
+<section id="mahasiswa" class="card" hidden>
+    <h2>Data Mahasiswa</h2>
+    <table>
+        <tr><th>NIM</th><th>Nama</th><th>Program Studi</th></tr>
+        <tr><td>001</td><td>Mahasiswa A</td><td>Informatika</td></tr>
+        <tr><td>002</td><td>Mahasiswa B</td><td>Sistem Informasi</td></tr>
+    </table>
+</section>
+
+<section id="jadwal" class="card" hidden>
+    <h2>Jadwal Perkuliahan</h2>
+    <table>
+        <tr><th>Hari</th><th>Mata Kuliah</th><th>Waktu</th></tr>
+        <tr><td>Senin</td><td>Pemrograman Web</td><td>08.00</td></tr>
+        <tr><td>Rabu</td><td>Basis Data</td><td>10.00</td></tr>
+        <tr><td>Jumat</td><td>Rekayasa Perangkat Lunak</td><td>13.00</td></tr>
+    </table>
+</section>
+</main>
+
+<footer>
+    <p>&copy; 2026 Aplikasi Digital Kampus</p>
+</footer>
+
+<script>
+function tampil(id) {
+    document.querySelectorAll("main section").forEach(function(bagian) {
+        bagian.hidden = true;
+    });
+    document.getElementById(id).hidden = false;
+}
+
+function tambahPengumuman() {
+    let input = document.getElementById("isiPengumuman");
+    let isi = input.value.trim();
+
+    if (isi === "") {
+        alert("Isi pengumuman terlebih dahulu!");
+        return;
+    }
+
+    let item = document.createElement("li");
+    item.textContent = isi;
+    document.getElementById("daftarPengumuman").appendChild(item);
+    input.value = "";
+}
+</script>
+
+</body>
+</html>
